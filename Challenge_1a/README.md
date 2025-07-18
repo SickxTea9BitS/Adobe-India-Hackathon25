@@ -39,7 +39,9 @@ docker run --rm -v $(pwd)/input:/app/input:ro -v $(pwd)/output/repoidentifier/:/
 Challenge_1a/
 ├── sample_dataset/
 │   ├── outputs/         # JSON files provided as outputs.
-│   └── pdfs/            # Input PDF files
+│   ├── pdfs/            # Input PDF files
+│   └── schema/          # Output schema definition
+│       └── output_schema.json
 ├── Dockerfile           # Docker container configuration
 ├── process_pdfs.py      # Sample processing script
 └── README.md           # This file
@@ -84,24 +86,8 @@ CMD ["python", "process_pdfs.py"]
 ## Expected Output Format
 
 ### Required JSON Structure
-Each PDF should generate a corresponding JSON file with structured data:
-```json
-{
-  "title": "Extracted Document Title",
-  "outline": [
-    {
-      "level": "H1",
-      "text": "Main Section Title",
-      "page": 1
-    },
-    {
-      "level": "H2",
-      "text": "Subsection Title", 
-      "page": 2
-    }
-  ]
-}
-```
+Each PDF should generate a corresponding JSON file that **must conform to the schema** defined in `sample_dataset/schema/output_schema.json`.
+
 
 ## Implementation Guidelines
 
@@ -132,6 +118,7 @@ docker run --rm -v $(pwd)/sample_dataset/pdfs:/app/input:ro -v $(pwd)/sample_dat
 - [ ] All PDFs in input directory are processed
 - [ ] JSON output files are generated for each PDF
 - [ ] Output format matches required structure
+- [ ] **Output conforms to schema** in `sample_dataset/schema/output_schema.json`
 - [ ] Processing completes within 10 seconds for 50-page PDFs
 - [ ] Solution works without internet access
 - [ ] Memory usage stays within 16GB limit
