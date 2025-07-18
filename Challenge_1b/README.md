@@ -1,64 +1,81 @@
 # Challenge 1b: Multi-Collection PDF Analysis
 
 ## Overview
-This challenge implements an advanced PDF analysis solution that processes multiple collections of documents and extracts relevant content based on specific personas and use cases.
+Advanced PDF analysis solution that processes multiple document collections and extracts relevant content based on specific personas and use cases.
 
 ## Project Structure
 ```
 Challenge_1b/
-├── Collection 1/                    # Travel Planning Collection
-│   ├── PDFs/                       # South of France travel guides
+├── Collection 1/                    # Travel Planning
+│   ├── PDFs/                       # South of France guides
+│   ├── challenge1b_input.json      # Input configuration
 │   └── challenge1b_output.json     # Analysis results
-├── Collection 2/                    # Adobe Acrobat Learning Collection
-│   ├── PDFs/                       # Acrobat tutorials and guides
+├── Collection 2/                    # Adobe Acrobat Learning
+│   ├── PDFs/                       # Acrobat tutorials
+│   ├── challenge1b_input.json      # Input configuration
 │   └── challenge1b_output.json     # Analysis results
 ├── Collection 3/                    # Recipe Collection
-│   ├── PDFs/                       # Cooking and meal planning guides
+│   ├── PDFs/                       # Cooking guides
+│   ├── challenge1b_input.json      # Input configuration
 │   └── challenge1b_output.json     # Analysis results
-└── README.md                       # This file
+└── README.md
 ```
 
 ## Collections
 
 ### Collection 1: Travel Planning
+- **Challenge ID**: round_1b_002
 - **Persona**: Travel Planner
-- **Use Case**: Plan a 4-day trip for 10 college friends to South of France
-- **Documents**: 7 South of France travel guides
+- **Task**: Plan a 4-day trip for 10 college friends to South of France
+- **Documents**: 7 travel guides
 
 ### Collection 2: Adobe Acrobat Learning
-- **Persona**: Learning Professional
-- **Use Case**: Comprehensive Acrobat training and skill development
-- **Documents**: 15 Acrobat tutorials and guides
+- **Challenge ID**: round_1b_003
+- **Persona**: HR Professional
+- **Task**: Create and manage fillable forms for onboarding and compliance
+- **Documents**: 15 Acrobat guides
 
 ### Collection 3: Recipe Collection
-- **Persona**: Home Chef
-- **Use Case**: Meal planning and recipe discovery
-- **Documents**: 9 cooking and meal planning guides
+- **Challenge ID**: round_1b_001
+- **Persona**: Food Contractor
+- **Task**: Prepare vegetarian buffet-style dinner menu for corporate gathering
+- **Documents**: 9 cooking guides
 
-## Output Format
+## Input/Output Format
 
-### JSON Structure
-Each collection generates a `challenge1b_output.json` file containing:
+### Input JSON Structure
+```json
+{
+  "challenge_info": {
+    "challenge_id": "round_1b_XXX",
+    "test_case_name": "specific_test_case"
+  },
+  "documents": [{"filename": "doc.pdf", "title": "Title"}],
+  "persona": {"role": "User Persona"},
+  "job_to_be_done": {"task": "Use case description"}
+}
+```
+
+### Output JSON Structure
 ```json
 {
   "metadata": {
-    "input_documents": ["list of processed PDF files"],
-    "persona": "Target user persona",
-    "job_to_be_done": "Specific use case description",
-    "processing_timestamp": "ISO timestamp"
+    "input_documents": ["list"],
+    "persona": "User Persona",
+    "job_to_be_done": "Task description"
   },
   "extracted_sections": [
     {
-      "document": "source_file.pdf",
-      "section_title": "Extracted section title",
+      "document": "source.pdf",
+      "section_title": "Title",
       "importance_rank": 1,
       "page_number": 1
     }
   ],
   "subsection_analysis": [
     {
-      "document": "source_file.pdf",
-      "refined_text": "Processed and cleaned content",
+      "document": "source.pdf",
+      "refined_text": "Content",
       "page_number": 1
     }
   ]
@@ -66,31 +83,11 @@ Each collection generates a `challenge1b_output.json` file containing:
 ```
 
 ## Key Features
-- **Persona-Based Analysis**: Content extraction tailored to specific user types
-- **Importance Ranking**: Prioritizes content based on relevance
-- **Multi-Collection Processing**: Handles diverse document collections
-- **Structured Output**: Comprehensive JSON analysis with metadata
-
-## Sample Results
-
-### Travel Planning Example
-For the Travel Planner persona:
-- **Top Priority**: City guides and major attractions (rank 1)
-- **Secondary**: Activities and entertainment options (rank 2-5)
-- **Supporting**: Tips, tricks, and practical information
-
-### Learning Professional Example
-For Adobe Acrobat training:
-- **Top Priority**: Core functionality guides
-- **Secondary**: Advanced features and AI capabilities
-- **Supporting**: Assessment and checklist materials
-
-## Implementation Notes
-- Content is ranked based on relevance to persona and use case
-- Extracted sections include titles, importance ranks, and page numbers
-- Refined text provides cleaned and contextualized content
-- Processing includes metadata about input documents and persona context
+- Persona-based content analysis
+- Importance ranking of extracted sections
+- Multi-collection document processing
+- Structured JSON output with metadata
 
 ---
 
-**Note**: This README provides an overview of the Challenge 1b solution structure and output format based on the available sample data. 
+**Note**: This README provides a brief overview of the Challenge 1b solution structure based on available sample data. 
