@@ -3,6 +3,29 @@
 ## Overview
 Advanced PDF analysis solution that processes multiple document collections and extracts relevant content based on specific personas and use cases.
 
+
+## 🚀 Running with Docker
+
+This solution is designed to be run inside a Docker container.
+
+### Prerequisites
+* You must have **Docker** installed and running on your system.
+
+### Step 1: Build the Docker Image
+Navigate to the project's root directory (`Challenge_1b/`) in your terminal and run the following command to build the Docker image.
+
+```bash
+# This command builds the image and tags it as 'challenge1b-analyzer'
+docker build -t sickxtea9bits.challenge1b-analyzer .
+```
+### Run Command
+```bash
+docker run --rm -v "$(pwd)/Collection 1:/app/input_output" sickxtea9bits.challenge1b-analyzer --input /app/input_output/challenge1b_input.json --output /app/input_output/challenge1b_output.json
+
+```
+
+
+
 ## Project Structure
 ```
 Challenge_1b/

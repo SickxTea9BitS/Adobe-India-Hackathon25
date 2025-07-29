@@ -12,12 +12,13 @@ This is a **sample solution** for Challenge 1a of the Adobe India Hackathon 2025
 
 ### Build Command
 ```bash
-docker build --platform linux/amd64 -t <reponame.someidentifier> .
+docker build --platform linux/amd64 -t sickxtea9bits.adobe-challenge-1a .
 ```
 
 ### Run Command
 ```bash
-docker run --rm -v $(pwd)/input:/app/input:ro -v $(pwd)/output/repoidentifier/:/app/output --network none <reponame.someidentifier>
+docker run --rm -v $(pwd)/input:/app/input:ro -v $(pwd)/output/repoidentifier/:/app/output docker run --rm -v $(pwd)/input:/app/input:ro -v $(pwd)/output/document-outline-extractor/:/app/output --network none sickxtea9bits.adobe-challenge-1a
+
 ```
 
 ### Critical Constraints
@@ -127,3 +128,5 @@ docker run --rm -v $(pwd)/sample_dataset/pdfs:/app/input:ro -v $(pwd)/sample_dat
 ---
 
 **Important**: This is a sample implementation. Participants should develop their own solutions that meet all the official challenge requirements and constraints. 
+
+##

@@ -1,0 +1,31 @@
+model:
+  yolo_model_path: "models/yolov11x_best.pt"
+  confidence_threshold: 0.25
+  target_classes: ["Title", "Section-header", "Page-footer"]
+  force_cpu: true  # Force CPU usage
+  device: "cpu"    # Explicit device specification
+
+ocr:
+  engine: "easyocr"
+  languages: ["en"]
+  confidence_threshold: 0.5
+  gpu: false  # Force CPU for OCR
+
+preprocessing:
+  pdf_dpi: 150
+  image_quality: 95
+
+output:
+  save_annotated_images: true
+  output_format: "json"
+  include_confidence_scores: true
+
+paths:
+  input_dir: "data/input"
+  output_dir: "data/output"
+  temp_dir: "data/temp"
+
+# Performance settings for CPU
+performance:
+  cpu_threads: 4  # Number of CPU threads to use
+  batch_size: 1   # Process one image at a time on CPU
